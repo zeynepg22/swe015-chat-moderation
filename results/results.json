@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "hardware": "Apple M2, 8 logical cores, Darwin 27.0.0, CPU only",
+    "test_size": 4000,
+    "offensive_in_test": 491,
+    "latency_runs": 200,
+    "latency_budget_ms": 50.0,
+    "threshold": 0.5
+  },
+  "rows": [
+    {
+      "key": "rule",
+      "model": "Rule: edit-distance lexicon",
+      "precision_type": "rules",
+      "macro_f1": 0.8233575650519737,
+      "accuracy": 0.935,
+      "offensive_precision": 0.851063829787234,
+      "offensive_recall": 0.570264765784114,
+      "size_mb": 0.085976,
+      "latency_ms": 0.18184187429142185,
+      "latency_p95_ms": 0.5919645467656665,
+      "within_budget": true
+    },
+    {
+      "key": "tfidf",
+      "model": "Classical: tf-idf + logistic regression",
+      "precision_type": "FP64",
+      "macro_f1": 0.8721693428146726,
+      "accuracy": 0.9435,
+      "offensive_precision": 0.7543186180422264,
+      "offensive_recall": 0.8004073319755601,
+      "size_mb": 2.424916,
+      "latency_ms": 0.25816732479142956,
+      "latency_p95_ms": 0.30216045124689117,
+      "within_budget": true
+    },
+    {
+      "key": "w2v",
+      "model": "Neural: word2vec + feedforward network",
+      "precision_type": "FP32",
+      "macro_f1": 0.8382180574875292,
+      "accuracy": 0.92675,
+      "offensive_precision": 0.68,
+      "offensive_recall": 0.7617107942973523,
+      "size_mb": 7.718433,
+      "latency_ms": 0.06656203971942887,
+      "latency_p95_ms": 0.09505449270363897,
+      "within_budget": true
+    },
+    {
+      "key": "bert_fp32",
+      "model": "Transformer: BERT (FP32, ONNX Runtime)",
+      "precision_type": "FP32",
+      "macro_f1": 0.9171087533156499,
+      "accuracy": 0.9625,
+      "offensive_precision": 0.8105646630236795,
+      "offensive_recall": 0.9063136456211812,
+      "size_mb": 438.176561,
+      "latency_ms": 20.379243970528478,
+      "latency_p95_ms": 37.39508751168614,
+      "within_budget": true
+    },
+    {
+      "key": "bert_int8",
+      "model": "Quantized Transformer: BERT (INT8, ONNX Runtime)",
+      "precision_type": "INT8",
+      "macro_f1": 0.9206787631552855,
+      "accuracy": 0.965,
+      "offensive_precision": 0.838150289017341,
+      "offensive_recall": 0.8859470468431772,
+      "size_mb": 110.288309,
+      "latency_ms": 7.489531685569091,
+      "latency_p95_ms": 13.341885086265393,
+      "within_budget": true
+    }
+  ]
+}

@@ -24,4 +24,4 @@ THRESHOLD = 0.5
 LATENCY_BUDGET_MS = 50.0
 LABELS = ["clean", "offensive"]
 
-HF_REPO = "YOUR_HF_USERNAME/swe015-chat-moderation"
+HF_REPO = "zeynep22/swe015-chat-moderation"
