@@ -16,9 +16,9 @@ FAINT = "#c9c9c9"
 ACCENT = "#c8501e"
 ACCENT_FILL = "#fdf1ea"
 
-fig, ax = plt.subplots(figsize=(16, 8.45), dpi=170)
+fig, ax = plt.subplots(figsize=(16, 8.06), dpi=170)
 ax.set_xlim(0, 16)
-ax.set_ylim(0.1, 8.55)
+ax.set_ylim(0.49, 8.55)
 ax.axis("off")
 fig.patch.set_facecolor("white")
 
@@ -60,14 +60,16 @@ ax.text(0.4, 8.3, "Offline training, done once", fontsize=8.6, color=MUTED, va="
 sw, sh, sy = 2.1, 0.72, 7.4
 s1 = box(0.4, sy, sw, sh, "Jigsaw Toxic Comment", file="data/raw/train.csv", faint=True)
 s2 = box(2.95, sy, sw, sh, "Build train / val / test", file="prepare_data.py", faint=True)
-s3 = box(5.5, sy, 4.3, sh, "Train the models", file="train_baseline.py · train_w2v_nn.py · train_bert.py", faint=True)
+s3 = box(5.5, sy - 0.15, 4.3, sh + 0.3, "Train the models", note="BERT fine-tuned on Google Colab (T4 GPU)",
+         file="train_baseline.py · train_w2v_nn.py · train_bert.py", faint=True)
 s4 = box(10.3, sy, 2.5, sh, "Quantize BERT: FP32 → INT8", file="quantize.py", faint=True)
 s5 = box(13.3, sy, 2.3, sh, "Hugging Face Hub", file="model weights, not in git", faint=True)
 for a, b in ((s1, s2), (s2, s3), (s3, s4), (s4, s5)):
     arrow(edge(a, "r"), edge(b, "l"), faint=True)
 
 fx, fy, fw, fh = 0.3, 0.55, 15.4, 6.2
-ax.add_patch(FancyBboxPatch((fx, fy), fw, fh, boxstyle="round,pad=0,rounding_size=0.15",
+fb = 0.94
+ax.add_patch(FancyBboxPatch((fx, fb), fw, fy + fh - fb, boxstyle="round,pad=0,rounding_size=0.15",
                             facecolor="white", edgecolor=LINE, linewidth=1.0, zorder=0))
 ax.text(fx + 0.25, fy + fh - 0.28, "Runs locally on CPU (Apple M2)  ·  python app.py",
         fontsize=9.2, color=INK, va="center", fontweight="bold")
@@ -136,7 +138,7 @@ ax.plot([sx, sx], [7.05, sy_top + 0.01], color=MUTED, linestyle="--", linewidth=
 arrow((sx, sy_top + 0.3), (sx, sy_top), dashed=True, shrink=0)
 ax.text(sx + 0.12, 6.92, "weights downloaded on first run  (download.py)", fontsize=7.4, color=MUTED, va="center")
 
-ax.text(fx + fw, fy - 0.22, "[A] neural network   [B] classical NLP   [C] Transformer   [D] efficient model",
+ax.text(fx + fw, fb - 0.22, "[A] neural network   [B] classical NLP   [C] Transformer   [D] efficient model",
         fontsize=7.4, color=MUTED, ha="right", va="center")
 
 fig.savefig(OUT, bbox_inches="tight", facecolor="white")
