@@ -1,0 +1,12 @@
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+models/
+results/failures.csv
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+.gradio/
