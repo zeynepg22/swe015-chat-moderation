@@ -125,6 +125,11 @@ hardware stated in the table.
 **Limitation.** BERT INT8 labels undirected profanity such as "shiiit that was close" as clean. The FP32
 model gives the same label, so this comes from fine-tuning on Jigsaw, not from quantization.
 
+**Note on pre-processing.** The classical models were trained before Turkish-character folding was added to
+`src/normalize.py`; this changes the prediction of 1 of the 4000 test messages for tf-idf + LR and
+word2vec + FFN (a false positive) and none for the rule baseline. BERT was trained after the change and is
+not affected.
+
 ## Reproduce everything from scratch
 
 1. **Data.** Download `train.csv` of the
