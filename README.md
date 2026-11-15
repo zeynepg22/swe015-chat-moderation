@@ -105,6 +105,8 @@ hardware stated in the table.
 | Transformer: BERT (FP32, ONNX Runtime) | FP32 | 0.9171 | 0.9625 | 0.9063 | 438.18 | 20.38 | 37.40 | yes |
 | Quantized Transformer: BERT (INT8, ONNX Runtime) | INT8 | 0.9207 | 0.9650 | 0.8859 | 110.29 | 7.49 | 13.34 | yes |
 
+![Results](docs/results.png)
+
 **What the table shows**
 
 - **INT8 quantization** shrinks BERT from 438.18 MB to 110.29 MB (about 4x smaller) and cuts the mean
